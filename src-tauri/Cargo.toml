@@ -1,0 +1,28 @@
+[package]
+name = "Falcon8Touch"
+version = "0.0.1"
+description = "A Tauri App"
+authors = ["Amaan Qureshi <amaanq12@gmail.com>"]
+license = "GPL-3.0-or-later"
+# repository = "https://github.com/amaanq/Falcon8Touch"
+edition = "2021"
+
+[dependencies]
+tauri = { version = "1.5.0", features = ["shell-open"] }
+serde = { version = "1.0.190", features = ["derive"] }
+serde_json = "1.0.108"
+rusb = "0.9.3"
+
+[build-dependencies]
+tauri-build = { version = "1.5.0", features = [] }
+
+[features]
+# this feature is used for production builds or when `devPath` points to the filesystem
+# DO NOT REMOVE!!
+custom-protocol = ["tauri/custom-protocol"]
+
+[profile.release]
+strip = true      # Automatically strip symbols from the binary.
+lto = false       # Link-time optimization.
+opt-level = 3     # Optimization level 3.
+codegen-units = 1 # Maximum size reduction optimizations.profile.release]
